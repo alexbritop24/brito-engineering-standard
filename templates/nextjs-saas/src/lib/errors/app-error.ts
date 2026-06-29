@@ -8,12 +8,10 @@ export type AppErrorCode =
 
 export class AppError extends Error {
   public readonly code: AppErrorCode;
-  public readonly cause?: unknown;
 
-  constructor(message: string, code: AppErrorCode = "INTERNAL_ERROR", cause?: unknown) {
-    super(message);
+  constructor(message: string, code: AppErrorCode = "INTERNAL_ERROR", options?: ErrorOptions) {
+    super(message, options);
     this.name = "AppError";
     this.code = code;
-    this.cause = cause;
   }
 }
